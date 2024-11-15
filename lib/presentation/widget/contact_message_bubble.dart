@@ -28,8 +28,35 @@ class ContactMessage extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
+        _ImageBubble()
       ],
+    );
+  }
+}
+
+class _ImageBubble extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return ClipRRect(
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      child: Image.network(
+        'https://yesno.wtf/assets/no/30-d37eee83c3c2180de4edb7da6fa9f5b7.gif',
+        height: size.height * 0.3,
+        width: size.width * 0.7,
+        fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+
+          return Container(
+            height: size.height * 0.3,
+            width: size.width * 0.7,
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: const Text('Loading...'),
+          );
+        },
+      ),
     );
   }
 }
