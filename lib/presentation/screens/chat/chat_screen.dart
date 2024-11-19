@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/presentation/screens/shared/message_field_box.dart';
 import 'package:yes_no_app/presentation/widget/contact_message_bubble.dart';
 import 'package:yes_no_app/presentation/widget/my_message_bubble.dart';
 
@@ -28,15 +29,24 @@ class _ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Expanded(
-          child: ListView.builder(
-        itemBuilder: (context, index) {
-          return index % 2 == 0 ? const ContactMessage() : const MyMessage();
-        },
-        itemCount: 100,
-      )),
-    ));
+      child: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return index % 2 == 0
+                      ? const ContactMessage()
+                      : const MyMessage();
+                },
+                itemCount: 100,
+              ),
+            ),
+          ),
+          const MessageFieldBox(),
+        ],
+      ),
+    );
   }
 }
