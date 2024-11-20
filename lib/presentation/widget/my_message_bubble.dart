@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class MyMessage extends StatelessWidget {
-  const MyMessage({super.key});
+
+  final Message message;
+
+
+  const MyMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +25,11 @@ class MyMessage extends StatelessWidget {
                     bottomRight: Radius.circular(10),
                     bottomLeft: Radius.circular(10),
                     topLeft: Radius.circular(10))),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            child:  Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: Text(
-                'Ipsum pariatur qui adipisicing ',
-                style: TextStyle(fontSize: 20, color: Colors.white),
+                message.text,
+                style: const TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),
           ),
