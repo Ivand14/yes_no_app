@@ -32,20 +32,26 @@ class ContactMessage extends StatelessWidget {
             ),
           ),
         ),
-        _ImageBubble()
+        _ImageBubble(
+          imageUrl: herMessage.imageUrl!,
+        )
       ],
     );
   }
 }
 
 class _ImageBubble extends StatelessWidget {
+  final String imageUrl;
+
+  const _ImageBubble({required this.imageUrl});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       child: Image.network(
-        'https://yesno.wtf/assets/no/30-d37eee83c3c2180de4edb7da6fa9f5b7.gif',
+        imageUrl,
         height: size.height * 0.3,
         width: size.width * 0.7,
         fit: BoxFit.cover,
