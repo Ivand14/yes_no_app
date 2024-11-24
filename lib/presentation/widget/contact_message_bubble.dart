@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class ContactMessage extends StatelessWidget {
-  const ContactMessage({super.key});
+  final Message herMessage;
+
+  const ContactMessage({super.key, required this.herMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +23,11 @@ class ContactMessage extends StatelessWidget {
                     bottomRight: Radius.circular(10),
                     bottomLeft: Radius.circular(10),
                     topRight: Radius.circular(10))),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: Text(
-                'Ipsum pariatur qui adipisicing ',
-                style: TextStyle(fontSize: 20, color: Colors.white),
+                herMessage.text,
+                style: const TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),
           ),
